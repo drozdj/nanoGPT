@@ -1,34 +1,24 @@
 
-# nanoGPT
 
-The cleanest, fastest repository for training/finetuning medium-sized GPTs.
+1. ```conda create -n nanoGPT python=3.10.18 ```
+    - [pytorch docs](https://shorturl.at/jpBT4)
 
-This repo currently requires reading the code, but it's not that bad. work ongoing...
+2. ```conda activate nanoGPT```
 
-Getting started:
+3. ```pip install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu```
 
-We need a few dependencies:
+4. ```pip install torch numpy transformers datasets tiktoken wandb tqdm```
 
-- [pytorch](https://pytorch.org), of course
-- numpy
-- `pip install datasets` for huggingface datasets
-- `pip install tiktoken` for OpenAI's fast bpe code
-- `pip install wandb` for optional logging
+~~5. ```python openwebtext/prepare.py```~~ 
+- throws error because it has issues retrieving openwebtest 
 
-```
-$ cd data/openwebtext
-$ python prepare.py
-```
+5. ```python data/shakespear_char/prepare.py```
 
-To download and tokenize the [openwebtext](https://huggingface.co/datasets/openwebtext) dataset. It will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in a massive sequence. Then we're ready to kick off training. First open up train.py and read it, make sure the settings look ok. Then:
+6. ```python train.py```
 
-```
-$ python train.py
-```
+7. ```python sample.py```
 
-Once some checkpoints are written to the output directory `out`, we're ready to sample from the model:
+---
 
-```
-$ python sample.py
-```
-
+- [original nanoGPT on M1](https://github.com/karpathy/nanoGPT/issues/28)
+- [Sebastian Raschka on pytorch](https://shorturl.at/ztcVV)

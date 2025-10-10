@@ -1,0 +1,6 @@
+/__pycache__
+/wandb
+data/shakespeare_char/*
+!data/shakespeare_char/prepare.py
+data/openwebtext
+/out

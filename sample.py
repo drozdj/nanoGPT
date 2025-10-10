@@ -6,7 +6,7 @@ import torch
 import tiktoken
 from model import GPTConfig, GPT
 
-device = 'cuda:2'
+device = 'mps'
 torch.manual_seed(1337)
 torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul
 torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn
@@ -30,7 +30,7 @@ x = (torch.tensor(start, dtype=torch.long, device=device)[None, ...])
 for k in range(1):
 
     with torch.no_grad():
-        with torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16):
+        with torch.amp.autocast(device_type="mps", dtype=torch.bfloat16):
             y = model.generate(x, 300, temperature=0.8, top_k=200)
 
     print(enc.decode(y[0].tolist()))

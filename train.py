@@ -19,6 +19,7 @@ out_dir = 'out'
 eval_interval = 500
 log_interval = 1
 # wandb logging
+<<<<<<< Updated upstream
 wandb_log = False
 wandb_entity = 'karpathy'
 wandb_project = 'owt'
@@ -27,8 +28,18 @@ wandb_run_name = 'owt1' # 'run' + str(time.time())
 dataset = 'openwebtext'
 batch_size = 32
 block_size = 512
+=======
+wandb_log = True # disabled by default
+wandb_entity = 'notjdr'
+wandb_project = 'owt'
+wandb_run_name = 'run' + str(time.time())
+# data
+dataset = 'shakespeare_char'
+batch_size = 4 # default 8
+block_size = 512 # default 1024
+>>>>>>> Stashed changes
 # model
-device = 'cuda:0'
+device = 'mps'
 init_from = 'scratch' # 'scratch' or 'resume' or 'gpt2*'
 dropout = 0.1
 n_layer = 12
@@ -95,7 +106,7 @@ def estimate_loss(eval_iters=50):
         losses = torch.zeros(eval_iters)
         for k in range(eval_iters):
             X, Y = get_batch(split)
-            with torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16):
+            with torch.amp.autocast(device_type="mps", dtype=torch.bfloat16):
                 logits, loss = model(X, Y)
             losses[k] = loss.item()
         out[split] = losses.mean()
@@ -168,7 +179,7 @@ while True:
                 torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))
 
     X, Y = get_batch('train')
-    with torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16):
+    with torch.amp.autocast(device_type="mps", dtype=torch.bfloat16):
         logits, loss = model(X, Y)
 
     optimizer.zero_grad(set_to_none=True)
