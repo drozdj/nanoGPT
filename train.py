@@ -19,16 +19,6 @@ out_dir = 'out'
 eval_interval = 500
 log_interval = 1
 # wandb logging
-<<<<<<< Updated upstream
-wandb_log = False
-wandb_entity = 'karpathy'
-wandb_project = 'owt'
-wandb_run_name = 'owt1' # 'run' + str(time.time())
-# data
-dataset = 'openwebtext'
-batch_size = 32
-block_size = 512
-=======
 wandb_log = True # disabled by default
 wandb_entity = 'notjdr'
 wandb_project = 'owt'
@@ -37,7 +27,6 @@ wandb_run_name = 'run' + str(time.time())
 dataset = 'shakespeare_char'
 batch_size = 4 # default 8
 block_size = 512 # default 1024
->>>>>>> Stashed changes
 # model
 device = 'mps'
 init_from = 'scratch' # 'scratch' or 'resume' or 'gpt2*'
