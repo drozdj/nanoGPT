@@ -1,5 +1,5 @@
-- https://github.com/drozdj/nanoGPT/worklog.md
-- https://github.com/drozdj/nanoGPT/todos.md
+- https://github.com/drozdj/nanoGPT/blob/main/worklog.md
+- https://github.com/drozdj/nanoGPT/blob/main/todos.md
 
 ## motivation?
 - work with performance implementations; maybe also kernels
