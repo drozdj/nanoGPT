@@ -3,6 +3,7 @@
 
 ## motivation?
 - work with performance implementations; maybe also kernels
+- reproduce original gpt-2 (124M) training
 
 ## instructions
 
