@@ -51,7 +51,7 @@ torch.manual_seed(1337)
 torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul
 torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn
 
-# poor man's data loader, TODO use real DataLoader...
+# TODO use real DataLoader... poor man's data loader, 
 data_dir = os.path.join('data', dataset)
 train_data = np.memmap(os.path.join(data_dir, 'train.bin'), dtype=np.uint16, mode='r')
 val_data = np.memmap(os.path.join(data_dir, 'val.bin'), dtype=np.uint16, mode='r')
@@ -71,7 +71,8 @@ if init_from == 'scratch':
     gptconf = GPTConfig(**model_args)
     model = GPT(gptconf)
 elif init_from == 'resume':
-    # resume training from a checkpoint. TODO: do we resume iter_num etc too? (yes...)
+    # resume training from a checkpoint. 
+    # TODO: do we resume iter_num etc too? (yes...)
     ckpt_path = os.path.join(out_dir, 'ckpt.pt')
     checkpoint = torch.load(ckpt_path)
     checkpoint_model_args = checkpoint['model_args']
@@ -180,7 +181,7 @@ while True:
     dt = t1 - t0
     t0 = t1
     if iter_num % log_interval == 0:
-        lossf = loss.item() # loss as float. TODO CPU-GPU sync: profile, make sure not slow af
+        lossf = loss.item() # TODO CPU-GPU sync: profile, make sure not slow af. loss as float. 
         print(f"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms")
     iter_num += 1
     num_tokens += X.numel()
